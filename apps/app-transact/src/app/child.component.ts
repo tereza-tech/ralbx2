@@ -3,18 +3,17 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 /* eslint-disable */
 
 @Component({
-  selector: 'ralbx2-nx-welcome',
+  selector: 'ralbx2-child',
   template: `
    
     <div class="wrapper">
-      Helllo
+      Ouií
     </div>
-    <ralbx2-layout></ralbx2-layout>
   `,
   styles: [],
   encapsulation: ViewEncapsulation.None,
 })
-export class NxWelcomeComponent implements OnInit {
+export class ChildComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void { }
