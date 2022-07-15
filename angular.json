@@ -1,0 +1,77 @@
+{
+  "version": 2,
+  "projects": {
+    "app-transact": "apps/app-transact",
+    "app-transact-e2e": "apps/app-transact-e2e",
+    "components": {
+      "projectType": "library",
+      "root": "libs/components",
+      "sourceRoot": "libs/components/src",
+      "prefix": "ralby",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/components"],
+          "options": {
+            "project": "libs/components/ng-package.json",
+            "tailwindConfig": "libs/components/tailwind.config.js"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/components/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/components/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/components/src/**/*.ts",
+              "libs/components/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "pages": {
+      "projectType": "library",
+      "root": "libs/pages",
+      "sourceRoot": "libs/pages/src",
+      "prefix": "ralbx",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/angular:ng-packagr-lite",
+          "outputs": ["dist/libs/pages"],
+          "options": {
+            "project": "libs/pages/ng-package.json",
+            "tailwindConfig": "libs/pages/tailwind.config.js"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/pages/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/pages/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/pages/src/**/*.ts",
+              "libs/pages/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    }
+  }
+}
