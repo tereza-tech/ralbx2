@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@ralbx2/components": ["libs/components/src/index.ts"],
-      "@ralbx2/pages": ["libs/pages/src/index.ts"]
+      "@ralbx2/pages": ["libs/pages/src/index.ts"],
+      "@ralbx2/shared/data-store": ["libs/shared/data-store/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
