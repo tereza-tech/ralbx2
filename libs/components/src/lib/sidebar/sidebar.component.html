@@ -1,0 +1,78 @@
+<div id="sideNavIcons" style="overflow: hidden">
+  <ul style="list-style-type: none">
+    <li style="padding-left: 0.76rem" (click)="toggleSideNav()">
+      <img
+        src="https://img.icons8.com/fluency-systems-regular/30/0551DD/menu--v1.png"
+        style="margin-bottom: 1.5rem; padding-left: 0rem; display: inline-block"
+        id="menuIcon"
+      />
+      <!-- <span class="iconName" [hidden]="!sideNavOpen" style="bottom: 2rem;">Menu</span> -->
+      <span
+        class="iconName"
+        [hidden]="!sideNavOpen"
+        [ngClass]="{ slideRight: false }"
+        style="bottom: 2rem"
+        >Menu</span
+      >
+    </li>
+
+    <li
+      class="pagesIcons"
+      *ngFor="let icon of sideNavIconList.slice(0, -1)"
+      [ngClass]="{ active: pageActive(icon) }"
+      style="margin: 1rem 0rem 2rem 0rem"
+      (click)="goToPage(icon)"
+    >
+      <img
+        *ngIf="pageActive(icon)"
+        src="https://img.icons8.com/fluency-systems-regular/25/0551DD/{{
+          icon
+        }}.png"
+        #{{icon}}
+      />
+
+      <img
+        *ngIf="!pageActive(icon)"
+        src="https://img.icons8.com/fluency-systems-regular/25/61A6F5/{{
+          icon
+        }}.png"
+        #{{icon}}
+      />
+
+      <!-- <span class="iconName" [ngClass]="{notActive: !pageActive(icon)}" [hidden]="!sideNavOpen">{{givePageName(icon)}}</span> -->
+      <span
+        class="iconName"
+        [hidden]="!sideNavOpen"
+        [ngClass]="{ notActive: !pageActive(icon), slideRight: false }"
+        >{{ givePageName(icon) }}</span
+      >
+    </li>
+
+    <li
+      class="pagesIcons"
+      [ngClass]="{ active: pageActive('user') }"
+      style="position: absolute; bottom: 1rem; padding-right: 0.8rem"
+      (click)="goToPage('user')"
+    >
+      <img
+        *ngIf="pageActive('user')"
+        src="https://img.icons8.com/fluency-systems-regular/25/0551DD/user.png"
+        #user
+      />
+
+      <img
+        *ngIf="!pageActive('user')"
+        src="https://img.icons8.com/fluency-systems-regular/25/61A6F5/user.png"
+        #user
+      />
+
+      <span
+        class="iconName"
+        [hidden]="!sideNavOpen"
+        [ngClass]="{ notActive: !pageActive('user'), slideRight: false }"
+        style="padding-right: 6rem"
+        >My Profile</span
+      >
+    </li>
+  </ul>
+</div>
