@@ -1,0 +1,18 @@
+{
+  "projectType": "library",
+  "root": "libs/models/interfaces",
+  "sourceRoot": "libs/models/interfaces/src",
+  "prefix": "ralbx",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/models/interfaces/src/**/*.ts",
+          "libs/models/interfaces/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
