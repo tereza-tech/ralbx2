@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app-transact';
+  currPage: string = 'Ticket Manager';
+  constructor() { }
 }

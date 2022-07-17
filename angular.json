@@ -11,7 +11,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/components"],
+          "outputs": [
+            "dist/libs/components"
+          ],
           "options": {
             "project": "libs/components/ng-package.json",
             "tailwindConfig": "libs/components/tailwind.config.js"
@@ -38,6 +40,7 @@
       },
       "tags": []
     },
+    "app-transact": "apps/app-transact",
     "datastatic": {
       "projectType": "application",
       "root": "apps/datastatic",
@@ -46,7 +49,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:webpack-browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/datastatic",
             "index": "apps/datastatic/src/index.html",
@@ -58,7 +63,12 @@
               "apps/datastatic/src/favicon.ico",
               "apps/datastatic/src/assets"
             ],
-            "styles": ["apps/datastatic/src/styles.scss"],
+            "styles": [
+              "apps/datastatic/src/styles.scss",
+              "node_modules/primeng/resources/themes/tailwind-light/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css"
+            ],
             "scripts": [],
             "customWebpackConfig": {
               "path": "apps/datastatic/webpack.config.js"
@@ -135,7 +145,10 @@
         "serve-mfe": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "commands": ["nx serve datastream", "nx serve datastatic"]
+            "commands": [
+              "nx serve datastream",
+              "nx serve datastatic"
+            ]
           }
         }
       },
@@ -149,7 +162,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:webpack-browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/datastream",
             "index": "apps/datastream/src/index.html",
@@ -161,7 +176,9 @@
               "apps/datastream/src/favicon.ico",
               "apps/datastream/src/assets"
             ],
-            "styles": ["apps/datastream/src/styles.scss"],
+            "styles": [
+              "apps/datastream/src/styles.scss"
+            ],
             "scripts": [],
             "customWebpackConfig": {
               "path": "apps/datastream/webpack.config.js"
@@ -238,7 +255,7 @@
       },
       "tags": []
     },
-    "models-interfaces": "libs/models/interfaces",
+    "models/interfaces": "libs/shared/models/interfaces",
     "pages": {
       "projectType": "library",
       "root": "libs/pages",
@@ -247,7 +264,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": ["dist/libs/pages"],
+          "outputs": [
+            "dist/libs/pages"
+          ],
           "options": {
             "project": "libs/pages/ng-package.json",
             "tailwindConfig": "libs/pages/tailwind.config.js"
@@ -300,7 +319,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:webpack-browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/useraccess",
             "index": "apps/useraccess/src/index.html",
@@ -312,7 +333,9 @@
               "apps/useraccess/src/favicon.ico",
               "apps/useraccess/src/assets"
             ],
-            "styles": ["apps/useraccess/src/styles.sass"],
+            "styles": [
+              "apps/useraccess/src/styles.sass"
+            ],
             "scripts": [],
             "customWebpackConfig": {
               "path": "apps/useraccess/webpack.config.js"
@@ -397,7 +420,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:webpack-browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/usercontrol",
             "index": "apps/usercontrol/src/index.html",
@@ -409,7 +434,9 @@
               "apps/usercontrol/src/favicon.ico",
               "apps/usercontrol/src/assets"
             ],
-            "styles": ["apps/usercontrol/src/styles.scss"],
+            "styles": [
+              "apps/usercontrol/src/styles.scss"
+            ],
             "scripts": [],
             "customWebpackConfig": {
               "path": "apps/usercontrol/webpack.config.js"
@@ -485,7 +512,10 @@
         "serve-mfe": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "commands": ["nx serve useraccess", "nx serve usercontrol"]
+            "commands": [
+              "nx serve useraccess",
+              "nx serve usercontrol"
+            ]
           }
         }
       },

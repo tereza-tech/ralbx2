@@ -5,6 +5,7 @@ let ralbx_ITransc = (a: ralbx_iTransaction) => { a.id };
 let ralbx_IUsers = (b: ralbx_iUser) => { b.id };
 
 interface ralbx_iFilters {
+    "id": number,
     "name": typeof ralbx_ITransc,
     "from": typeof ralbx_IUsers,
     "to": typeof ralbx_IUsers,
