@@ -1,14 +1,12 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "root": "apps/app-transact",
   "sourceRoot": "apps/app-transact/src",
   "prefix": "ralbx2",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/app-transact",
         "index": "apps/app-transact/src/index.html",
@@ -20,9 +18,7 @@
           "apps/app-transact/src/favicon.ico",
           "apps/app-transact/src/assets"
         ],
-        "styles": [
-          "apps/app-transact/src/styles.scss"
-        ],
+        "styles": ["apps/app-transact/src/styles.scss"],
         "scripts": []
       },
       "configurations": {
@@ -82,11 +78,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/app-transact"
-      ],
+      "outputs": ["coverage/apps/app-transact"],
       "options": {
-        "jestConfig": "apps/app-transact/jest.config.js",
+        "jestConfig": "apps/app-transact/jest.config.ts",
         "passWithNoTests": true
       }
     }

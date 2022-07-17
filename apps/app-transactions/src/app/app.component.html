@@ -1,0 +1,56 @@
+<div class="allContent" style="justify-content: left">
+  <ralbx2-side-bar [currPage]="this.currPage"></ralbx2-side-bar>
+  <div style="padding: 1rem 2rem 1rem 1rem; margin-left: 3.15rem">
+    <div style="margin-left: 1.75rem">
+      <img
+        class="headingIcon"
+        src="https://img.icons8.com/fluency-systems-regular/30/0551DD/two-tickets.png"
+      />
+      <h2
+        style="display: inline-block; color: rgb(5, 81, 221)"
+        class="fredoka500"
+      >
+        Ticket Manager
+      </h2>
+    </div>
+    <ralbx2-filter-bar></ralbx2-filter-bar>
+    <app-read></app-read>
+    <h5>Button Set</h5>
+    <span class="p-buttonset">
+      <button pButton pRipple label="Save" icon="pi pi-check"></button>
+      <button pButton pRipple label="Delete" icon="pi pi-trash"></button>
+      <button pButton pRipple label="Cancel" icon="pi pi-times"></button>
+    </span>
+
+    <h5>Sizes</h5>
+    <div class="sizes">
+      <p-button
+        label="Small"
+        icon="pi pi-check"
+        styleClass="p-button-sm"
+      ></p-button>
+      <p-button
+        label="Normal"
+        icon="pi pi-check"
+        styleClass="p-button"
+      ></p-button>
+      <p-button
+        label="Large"
+        icon="pi pi-check"
+        styleClass="p-button-lg"
+      ></p-button>
+    </div>
+    <button
+      pButton
+      pRipple
+      type="button"
+      icon="pi pi-plus"
+      class="p-button-rounded p-button-info add-button"
+      (click)="toggleModal()"
+      *ngIf="!createModalOpen"
+    ></button>
+    <ralbx2-modal></ralbx2-modal>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<!-- Ticket Manager running -->

@@ -9,17 +9,45 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { MessageService } from 'primeng/api';
 import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
 
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { FilterbarComponent } from './filterbar/filterbar.component';
+import { FilterbarModule } from './filterbar/filterbar.module';
+import { ModalModule } from './modal/modal.module';
 import { XsConfirmBtnComponent } from './buttons/xs-confirm/xs-confirm.component';
 import { MdConfirmBtnComponent } from './buttons/md-confirm/md-confirm.component';
 import { XlConfirmBtnComponent } from './buttons/xl-confirm/xl-confirm.component';
+import { ListableComponent } from './listable/listable.component';
 
 @NgModule({
-  declarations: [SidebarComponent, FilterbarComponent, XsConfirmBtnComponent, MdConfirmBtnComponent, XlConfirmBtnComponent],
-  imports: [CommonModule, CheckboxModule, RadioButtonModule, OverlayPanelModule, ButtonModule, ToastModule, InputTextModule, FormsModule],
-  exports: [SidebarComponent, FilterbarComponent, XsConfirmBtnComponent, MdConfirmBtnComponent, XlConfirmBtnComponent],
-  providers: [MessageService]
+  declarations: [
+    SidebarComponent,
+    XsConfirmBtnComponent,
+    MdConfirmBtnComponent,
+    XlConfirmBtnComponent,
+    ListableComponent,
+  ],
+  imports: [
+    CommonModule,
+    FilterbarModule,
+    CheckboxModule,
+    ModalModule,
+    RadioButtonModule,
+    OverlayPanelModule,
+    ButtonModule,
+    ToastModule,
+    InputTextModule,
+    FormsModule,
+    TableModule
+  ],
+  exports: [
+    SidebarComponent,
+    FilterbarModule,
+    XsConfirmBtnComponent,
+    MdConfirmBtnComponent,
+    XlConfirmBtnComponent,
+    ModalModule,
+  ],
+  providers: [MessageService],
 })
 export class ComponentsModule { }
