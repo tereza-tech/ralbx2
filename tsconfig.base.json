@@ -16,9 +16,17 @@
     "baseUrl": ".",
     "paths": {
       "@ralbx2/components": ["libs/components/src/index.ts"],
-      "@ralbx2/models/interfaces": ["libs/models/interfaces/src/index.ts"],
       "@ralbx2/pages": ["libs/pages/src/index.ts"],
-      "@ralbx2/shared/data-store": ["libs/shared/data-store/src/index.ts"]
+      "@ralbx2/shared/models": [
+        "libs/shares/src/models/src/models/src/index.ts"
+      ],
+      "@ralbx2/shared/prime-ng": ["libs/shared/prime-ng/index.ts"],
+      "@ralbx2/shares": ["libs/shares/src/index.ts"],
+      "ralbx2/shared/data-store": ["libs/shares/src/data-store/src/index.ts"],
+      "ralbx2/shared/interfaces": [
+        "libs/shares/src/modules/interfaces/src/index.ts"
+      ],
+      "ralbx2/shared/modules": ["libs/shares/src/modules/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

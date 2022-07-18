@@ -4,6 +4,9 @@
 
 export const environment = {
   production: false,
+  MONGODB_URI: 'mongodb://localhost:27017/angularfullstack',
+  MONGODB_TEST_URI: 'mongodb://localhost:27017/test',
+  SECRET_TOKEN: 'catswillruletheworld'
 };
 
 /*

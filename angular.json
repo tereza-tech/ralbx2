@@ -1,9 +1,98 @@
 {
   "version": 2,
   "projects": {
-    "app-transact": "apps/app-transact",
-    "app-transact-e2e": "apps/app-transact-e2e",
+    "app-transactions": {
+      "projectType": "application",
+      "root": "apps/app-transactions",
+      "sourceRoot": "apps/app-transactions/src",
+      "prefix": "ralbx2",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/app-transactions",
+            "index": "apps/app-transactions/src/index.html",
+            "main": "apps/app-transactions/src/main.ts",
+            "polyfills": "apps/app-transactions/src/polyfills.ts",
+            "tsConfig": "apps/app-transactions/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/app-transactions/src/favicon.ico",
+              "apps/app-transactions/src/assets"
+            ],
+            "styles": ["apps/app-transactions/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/app-transactions/src/environments/environment.ts",
+                  "with": "apps/app-transactions/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "app-transactions:build:production"
+            },
+            "development": {
+              "browserTarget": "app-transactions:build:development"
+            }
+          },
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 4200,
+            "proxyConfig": "apps/app-transactions/proxy.conf.json"
+          }
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "app-transactions:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/app-transactions/src/**/*.ts",
+              "apps/app-transactions/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "components": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
       "root": "libs/components",
       "sourceRoot": "libs/components/src",
@@ -11,9 +100,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": [
-            "dist/libs/components"
-          ],
+          "outputs": ["dist/libs/components"],
           "options": {
             "project": "libs/components/ng-package.json",
             "tailwindConfig": "libs/components/tailwind.config.js"
@@ -40,8 +127,8 @@
       },
       "tags": []
     },
-    "app-transact": "apps/app-transact",
     "datastatic": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "application",
       "root": "apps/datastatic",
       "sourceRoot": "apps/datastatic/src",
@@ -49,9 +136,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:webpack-browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/datastatic",
             "index": "apps/datastatic/src/index.html",
@@ -145,16 +230,14 @@
         "serve-mfe": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "commands": [
-              "nx serve datastream",
-              "nx serve datastatic"
-            ]
+            "commands": ["nx serve datastream", "nx serve datastatic"]
           }
         }
       },
       "tags": []
     },
     "datastream": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "application",
       "root": "apps/datastream",
       "sourceRoot": "apps/datastream/src",
@@ -162,9 +245,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:webpack-browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/datastream",
             "index": "apps/datastream/src/index.html",
@@ -176,9 +257,7 @@
               "apps/datastream/src/favicon.ico",
               "apps/datastream/src/assets"
             ],
-            "styles": [
-              "apps/datastream/src/styles.scss"
-            ],
+            "styles": ["apps/datastream/src/styles.scss"],
             "scripts": [],
             "customWebpackConfig": {
               "path": "apps/datastream/webpack.config.js"
@@ -255,56 +334,109 @@
       },
       "tags": []
     },
-    "models/interfaces": "libs/shared/models/interfaces",
-    "pages": {
+    "shared-prime-ng": {
+      "$schema": "../../../node_modules/nx/schemas/project-schema.json",
       "projectType": "library",
-      "root": "libs/pages",
-      "sourceRoot": "libs/pages/src",
-      "prefix": "ralbx",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/angular:ng-packagr-lite",
-          "outputs": [
-            "dist/libs/pages"
-          ],
-          "options": {
-            "project": "libs/pages/ng-package.json",
-            "tailwindConfig": "libs/pages/tailwind.config.js"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/pages/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "libs/pages/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/pages/src/**/*.ts",
-              "libs/pages/src/**/*.html"
-            ]
-          }
-        }
-      },
-      "tags": []
-    },
-    "shared-data-store": {
-      "projectType": "library",
-      "root": "libs/shared/data-store",
-      "sourceRoot": "libs/shared/data-store/src",
+      "root": "libs/shared/prime-ng",
+      "sourceRoot": "libs/shared/prime-ng/src",
       "prefix": "ralbx2",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/shared/data-store/src/**/*.ts",
-              "libs/shared/data-store/src/**/*.html"
+              "libs/shared/prime-ng/src/**/*.ts",
+              "libs/shared/prime-ng/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "shares": {
+      "projectType": "library",
+      "root": "libs/shares",
+      "sourceRoot": "libs/shares/src",
+      "prefix": "ralbx2",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shares/src/**/*.ts",
+              "libs/shares/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "shares-src-data-store": {
+      "projectType": "library",
+      "root": "libs/shares/src/data-store",
+      "sourceRoot": "libs/shares/src/data-store/src",
+      "prefix": "ralbx2",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shares/src/data-store/src/**/*.ts",
+              "libs/shares/src/data-store/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "shares-src-models-src-models": {
+      "projectType": "library",
+      "root": "libs/shares/src/models/src/models",
+      "sourceRoot": "libs/shares/src/models/src/models/src",
+      "prefix": "ralbx2",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shares/src/models/src/models/src/**/*.ts",
+              "libs/shares/src/models/src/models/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "shares-src-modules": {
+      "projectType": "library",
+      "root": "libs/shares/src/modules",
+      "sourceRoot": "libs/shares/src/modules/src",
+      "prefix": "ralbx2",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shares/src/modules/src/**/*.ts",
+              "libs/shares/src/modules/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "shares-src-modules-interfaces": {
+      "projectType": "library",
+      "root": "libs/shares/src/modules/interfaces",
+      "sourceRoot": "libs/shares/src/modules/interfaces/src",
+      "prefix": "ralbx2",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/shares/src/modules/interfaces/src/**/*.ts",
+              "libs/shares/src/modules/interfaces/src/**/*.html"
             ]
           }
         }
@@ -312,6 +444,7 @@
       "tags": []
     },
     "useraccess": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "application",
       "root": "apps/useraccess",
       "sourceRoot": "apps/useraccess/src",
@@ -319,9 +452,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:webpack-browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/useraccess",
             "index": "apps/useraccess/src/index.html",
@@ -333,9 +464,7 @@
               "apps/useraccess/src/favicon.ico",
               "apps/useraccess/src/assets"
             ],
-            "styles": [
-              "apps/useraccess/src/styles.sass"
-            ],
+            "styles": ["apps/useraccess/src/styles.sass"],
             "scripts": [],
             "customWebpackConfig": {
               "path": "apps/useraccess/webpack.config.js"
@@ -413,6 +542,7 @@
       "tags": []
     },
     "usercontrol": {
+      "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "application",
       "root": "apps/usercontrol",
       "sourceRoot": "apps/usercontrol/src",
@@ -420,9 +550,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/angular:webpack-browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/usercontrol",
             "index": "apps/usercontrol/src/index.html",
@@ -434,9 +562,7 @@
               "apps/usercontrol/src/favicon.ico",
               "apps/usercontrol/src/assets"
             ],
-            "styles": [
-              "apps/usercontrol/src/styles.scss"
-            ],
+            "styles": ["apps/usercontrol/src/styles.scss"],
             "scripts": [],
             "customWebpackConfig": {
               "path": "apps/usercontrol/webpack.config.js"
@@ -512,10 +638,7 @@
         "serve-mfe": {
           "executor": "@nrwl/workspace:run-commands",
           "options": {
-            "commands": [
-              "nx serve useraccess",
-              "nx serve usercontrol"
-            ]
+            "commands": ["nx serve useraccess", "nx serve usercontrol"]
           }
         }
       },
